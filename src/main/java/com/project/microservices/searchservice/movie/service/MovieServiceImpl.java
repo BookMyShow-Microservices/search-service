@@ -45,7 +45,7 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	@RateLimiter(name = "myRateLimiter")
-	public List<String> findByMovieName(String movieName) {
+	public List<String> SearchByMovieName(String movieName) {
 		log.info("Opened this movie serach service for {} th", i++);
 		List<String> listOfMovieNames = movieRepository.findByMovieName(movieName);
 		if(listOfMovieNames.isEmpty()) {
@@ -81,6 +81,24 @@ public class MovieServiceImpl implements MovieService {
 	    
 	    return movieMap;
 	}
+
+	@Override
+	@RateLimiter(name = "myRateLimiter")
+	public Map<String, Integer> SearchByMovieName1(String movieName) {
+		List<MovieResponse> listOfMovieNames = movieRepository.findByMovieName1(movieName);
+		if(listOfMovieNames.isEmpty()) {
+			log.warn("v2-No movie search list found for movieName: {}", movieName);
+			throw new MovieNotFoundException("No list found for the given name: " + movieName);
+		}
+		log.info("v2-Opened this movie search service for {} th", i++);
+
+		Map<String,Integer> searchMap = new HashMap<>();
+		for(MovieResponse movielist: listOfMovieNames){
+			searchMap.put(movielist.getMovieName(),movielist.getMovieId());
+		}
+		return searchMap;
+	}
+
 
 
 }
