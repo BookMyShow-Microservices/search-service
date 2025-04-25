@@ -1,6 +1,5 @@
 package com.project.microservices.searchservice.movie.service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -23,16 +22,16 @@ import lombok.extern.slf4j.Slf4j;
 public class MovieServiceImpl implements MovieService {
 	
 	
-	private MovieRepository movieRepository;
-	private ShowRepository showRepository;
+	private final MovieRepository movieRepository;
+	private final ShowRepository showRepository;
 	Integer i = 1;
 	
 	@Autowired
 	public MovieServiceImpl(MovieRepository movieRepository, ShowRepository showRepository) {
 		super();
 		this.movieRepository = movieRepository;
-		this.showRepository = showRepository;
-	}	
+        this.showRepository = showRepository;
+    }
 
 	@Override
 	public List<SearchQueryResponse> findTheatersByMovieNameAndTheaterCity(String movieName, String theaterCity) {
@@ -47,7 +46,7 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	@RateLimiter(name = "myRateLimiter")
 	public List<String> SearchByMovieName(String movieName) {
-		log.info("Opened this movie serach service for {} th", i++);
+		log.info("Opened this movie search service for {} th", i++);
 		List<String> listOfMovieNames = movieRepository.findByMovieName(movieName);
 		if(listOfMovieNames.isEmpty()) {
 			log.warn("No movie search list found for movieName: {}", movieName);
@@ -60,7 +59,7 @@ public class MovieServiceImpl implements MovieService {
 	public List<String> findMoviesByCity(String cityName) {
 		List<String> listOfMovieNamesByCity = showRepository.searchByCitiesToGetMovies(cityName);
 		if(listOfMovieNamesByCity.isEmpty()) {
-			log.warn("No movie search list found for movieName: {}", cityName);
+			log.warn("No movie search list found for cityName: {}", cityName);
 		    throw new MovieNotFoundException("No list found for the given name: " + cityName);
 		}
 		return listOfMovieNamesByCity;
@@ -68,15 +67,15 @@ public class MovieServiceImpl implements MovieService {
 	
 	@Override
 	public Map<Integer,String> findMoviesByCityId(Integer cityId) {
-	    List<MovieResponse> listOfMovieNamesByCity = showRepository.searchByCitiesToGetMovies1(cityId);
+
+		List<MovieResponse> listOfMovieNamesByCity = showRepository.searchByCitiesToGetMovies1(cityId);
 
 	    if (listOfMovieNamesByCity.isEmpty()) {
 	        log.warn("No movies found for cityId: {}", cityId);
 	        throw new MovieNotFoundException("No movies found for the given city ID: " + cityId);
 	    }
         //used java 8 features - reference methods
-		Map<Integer, String> movieMap = listOfMovieNamesByCity.stream().collect(Collectors.toMap(MovieResponse::getMovieId,MovieResponse::getMovieName));
-	    return movieMap;
+		return listOfMovieNamesByCity.stream().collect(Collectors.toMap(MovieResponse::getMovieId,MovieResponse::getMovieName));
 	}
 
 	@Override
@@ -90,8 +89,7 @@ public class MovieServiceImpl implements MovieService {
 		log.info("Opened this movie -v2 search service  for {} th", i++);
 		//used java 8- stream api feature
 		//Map<String,Integer> searchMap = listOfMovieNames.stream().collect(Collectors.toMap(MovieResponse::getMovieName,MovieResponse::getMovieId));
-		Map<String,Integer> searchMap = listOfMovieNames.stream().collect(Collectors.toMap(movieResponse -> movieResponse.getMovieName(),movieResponse -> movieResponse.getMovieId()));
-		return searchMap;
+		return listOfMovieNames.stream().collect(Collectors.toMap(movieResponse -> movieResponse.getMovieName(),movieResponse -> movieResponse.getMovieId()));
 	}
 
 
