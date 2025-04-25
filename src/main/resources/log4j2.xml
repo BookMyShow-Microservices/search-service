@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Properties>
+        <Property name="LOG_PATH">E:/MyLearnings/Java/MicroServices/BookMyShow-MS/elk-logging/logs</Property>
+        <Property name="SERVICE_NAME">search-service</Property>
+        <Property name="LOG_FILE">${LOG_PATH}/{SERVICE_NAME}.log</Property>
+    </Properties>
+
+    <Appenders>
+        <!-- Logstash Socket Appender -->
+        <Socket name="Logstash" host="localhost" port="5000">
+            <JsonLayout compact="true" eventEol="true">
+                <KeyValuePair key="service" value="search-service"/>
+            </JsonLayout>
+        </Socket>
+
+        <!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p [%X{service}] %c{1}:%L - %m%n"/>
+        </Console>
+
+        <!-- Rolling File Appender with daily zip and GC filter -->
+        <RollingFile name="FileLogger" fileName="${LOG_FILE}" filePattern="${LOG_PATH}/search-service-%d{yyyy-MM-dd}.log.zip">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p [%X{service}] %c{1}:%L - %m%n"/>
+
+            <!-- Filters to exclude GC logs -->
+            <Filters>
+                <RegexFilter regex="\[GC" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <RegexFilter regex="Full GC" onMatch="DENY" onMismatch="NEUTRAL"/>
+            </Filters>
+
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+
+            <DefaultRolloverStrategy fileIndex="min" compressionLevel="9"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Logstash"/>
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileLogger"/>
+        </Root>
+    </Loggers>
+</Configuration>
