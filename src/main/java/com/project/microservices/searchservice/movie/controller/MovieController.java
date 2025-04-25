@@ -3,6 +3,7 @@ package com.project.microservices.searchservice.movie.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.project.microservices.searchservice.movie.model.MovieResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,12 @@ private MovieService movieService;
 	
 	@GetMapping("/api/movie/search")
 	public ResponseEntity<List<String>> getMoviesByName(@RequestParam @NotBlank String movieName) {
-	    return new ResponseEntity<>(movieService.findByMovieName(movieName), HttpStatus.OK);
+	    return new ResponseEntity<>(movieService.SearchByMovieName(movieName), HttpStatus.OK);
+	}
+
+	@GetMapping("/api/v2/movie/search")
+	public ResponseEntity<Map<String,Integer>> getMoviesByName1(@RequestParam @NotBlank String movieName) {
+		return new ResponseEntity<>(movieService.SearchByMovieName1(movieName), HttpStatus.OK);
 	}
 	
 	@GetMapping("/api/movie/explore")
