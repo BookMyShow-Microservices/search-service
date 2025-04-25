@@ -1,6 +1,5 @@
 package com.project.microservices.searchservice.movie.service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,11 +12,13 @@ public interface MovieService {
 	
 	public List<SearchQueryResponse1> findTheatersByMovieIdAndTheaterId(Integer movieId, Integer theaterId);
 
-	public List<String> findByMovieName(String movieName);
+	public List<String> SearchByMovieName(String movieName);
 
 	public List<String> findMoviesByCity(String cityName);
 
 	public Map<Integer, String> findMoviesByCityId(Integer cityId);
+
+	public Map<String,Integer> SearchByMovieName1(String movieName);
 
 	
 }
