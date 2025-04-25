@@ -2,6 +2,7 @@ package com.project.microservices.searchservice.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.project.microservices.searchservice.model.SearchResponse;
 
@@ -13,7 +14,7 @@ public interface SearchService {
 	
 	public List<String> getAllCities();
 	
-	public HashMap<Integer, String> getAllCities1();
+	public Map<Integer, String> getAllCities1();
 
 	
 
