@@ -54,7 +54,7 @@ public class SearchController {
 	
 	@GetMapping("/api/v2/cities")
 	public ResponseEntity<Map<Integer, String>> getCitiesV2(){
-		return new ResponseEntity<>(searchService.getAllCities1(),HttpStatus.OK);
+		return new ResponseEntity<>(searchService.getAllCitiesV2(),HttpStatus.OK);
 	}
 	
 
