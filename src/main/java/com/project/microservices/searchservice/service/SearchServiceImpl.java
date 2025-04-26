@@ -2,12 +2,8 @@ package com.project.microservices.searchservice.service;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -131,20 +127,13 @@ public class SearchServiceImpl  implements SearchService{
 	}
 	
 	@Override
-	public HashMap<Integer, String> getAllCities1() {
+	public Map<Integer, String> getAllCitiesV2() {
 	    List<CityEntity> cityEntity = cityRepository.findAll();
 	    if (cityEntity.isEmpty()) {
 	        throw new NotFoundException("No cities found from the entity");
 	    }
-
-	    // Initialize the map before usage
-	    HashMap<Integer, String> mapList = new HashMap<>();
-
-	    // Populate the map with cityId as key and cityName as value
-	    for (CityEntity entity : cityEntity) {
-	        mapList.put(entity.getCityId(), entity.getCityName());
-	    }
-
+	    // Using java 8 features
+	    Map<Integer, String> mapList = cityEntity.stream().collect(Collectors.toMap(CityEntity::getCityId,CityEntity::getCityName));
 	    return mapList;
 	}
 	
@@ -160,12 +149,10 @@ public class SearchServiceImpl  implements SearchService{
 			}else {
 					Integer theaterMovieId = searchQueryResponseList.get(0).getMovieId();
 					String name = searchQueryResponseList.get(0).getMovieName();
-					//String city = searchQueryResponseList.get(0).getTheaterCity();
-					//Integer cityId = searchQueryResponseList.get(0).getCityId();
 					
 					searchResponse.setMovieId(theaterMovieId);
 					searchResponse.setMovieName(name);
-					Optional<CityEntity> cityEntity = cityRepository.findById(theaterCityId);
+					Optional<CityEntity> cityEntity = cityRepository.findById(theaterCityId); //using java 8 - optional feature
 					if(cityEntity.isPresent()) {
 						searchResponse.setTheaterCity(cityEntity.get().getCityName());
 					}
