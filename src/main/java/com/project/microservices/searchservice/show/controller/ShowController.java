@@ -15,7 +15,7 @@ import jakarta.validation.constraints.NotNull;
 @RestController
 public class ShowController {
 	
-	private ShowService showService;
+	private final ShowService showService;
 	
 	@Autowired
 	public ShowController(ShowService showService) {
