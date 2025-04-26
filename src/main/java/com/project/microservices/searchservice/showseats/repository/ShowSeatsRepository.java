@@ -12,9 +12,6 @@ import com.project.microservices.searchservice.showseats.model.ShowSeatsQueryRes
 
 @Repository
 public interface ShowSeatsRepository extends JpaRepository<ShowSeatsEntity, Integer> {
-	
-	
-
 
 	@Query("SELECT new com.project.microservices.searchservice.showseats.model.ShowSeatsQueryResponse(" +
 		       "movies.movieId, movies.movieName, " +
