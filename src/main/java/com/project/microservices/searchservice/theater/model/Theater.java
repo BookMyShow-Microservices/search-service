@@ -18,8 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Theater {
-	
-	
+
 	private Integer theaterId;
 
 	@NotEmpty @NotNull (message="The Theater name is required")
@@ -48,6 +47,5 @@ public class Theater {
 	@JsonSerialize(using = JsonTimestampSerializer.class)
 	@Column(name="theater_updatedon")
 	private Timestamp theaterUpdatedon;
-	
 
 }
