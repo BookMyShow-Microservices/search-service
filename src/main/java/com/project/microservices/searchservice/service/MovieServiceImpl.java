@@ -1,21 +1,19 @@
-package com.project.microservices.searchservice.movie.service;
-
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+package com.project.microservices.searchservice.service;
 
 import com.project.microservices.searchservice.exception.MovieNotFoundException;
 import com.project.microservices.searchservice.model.SearchQueryResponse;
 import com.project.microservices.searchservice.model.SearchQueryResponse1;
-import com.project.microservices.searchservice.movie.model.MovieResponse;
-import com.project.microservices.searchservice.movie.repository.MovieRepository;
-import com.project.microservices.searchservice.show.repository.ShowRepository;
-
+import com.project.microservices.searchservice.model.MovieResponse;
+import com.project.microservices.searchservice.repository.MovieRepository;
+import com.project.microservices.searchservice.repository.ShowRepository;
 import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j

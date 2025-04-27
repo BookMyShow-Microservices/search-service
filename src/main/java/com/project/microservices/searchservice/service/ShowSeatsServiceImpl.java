@@ -1,21 +1,19 @@
-package com.project.microservices.searchservice.showseats.service;
-
-import java.util.HashMap;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+package com.project.microservices.searchservice.service;
 
 import com.project.microservices.searchservice.exception.InvalidShowIDException;
 import com.project.microservices.searchservice.model.Status;
-import com.project.microservices.searchservice.show.model.ShowDetails;
-import com.project.microservices.searchservice.showseats.model.ShowSeatSubDetails;
-import com.project.microservices.searchservice.showseats.model.ShowSeatsQueryResponse;
-import com.project.microservices.searchservice.showseats.model.ShowSeatsResponse;
-import com.project.microservices.searchservice.showseats.repository.ShowSeatsRepository;
+import com.project.microservices.searchservice.model.ShowDetails;
+import com.project.microservices.searchservice.model.ShowSeatSubDetails;
+import com.project.microservices.searchservice.model.ShowSeatsQueryResponse;
+import com.project.microservices.searchservice.model.ShowSeatsResponse;
+import com.project.microservices.searchservice.repository.ShowSeatsRepository;
 import com.project.microservices.searchservice.utils.Utility;
-
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.List;
 
 @Service
 @Slf4j

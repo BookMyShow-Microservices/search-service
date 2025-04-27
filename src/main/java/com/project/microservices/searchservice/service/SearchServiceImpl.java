@@ -8,15 +8,15 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.microservices.searchservice.city.entity.CityEntity;
-import com.project.microservices.searchservice.city.repository.CityRepository;
+import com.project.microservices.searchservice.entity.CityEntity;
+import com.project.microservices.searchservice.repository.CityRepository;
 import com.project.microservices.searchservice.exception.TheaterNotFoundException;
 import com.project.microservices.searchservice.model.SearchQueryResponse;
 import com.project.microservices.searchservice.model.SearchQueryResponse1;
 import com.project.microservices.searchservice.model.SearchResponse;
 import com.project.microservices.searchservice.model.TheaterShows;
-import com.project.microservices.searchservice.movie.service.MovieService;
-import com.project.microservices.searchservice.theater.repository.TheaterRepository;
+import com.project.microservices.searchservice.service.MovieService;
+import com.project.microservices.searchservice.repository.TheaterRepository;
 import com.project.microservices.searchservice.utils.Utility;
 
 import jakarta.ws.rs.NotFoundException;

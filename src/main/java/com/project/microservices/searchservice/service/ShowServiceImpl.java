@@ -1,15 +1,13 @@
-package com.project.microservices.searchservice.show.service;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+package com.project.microservices.searchservice.service;
 
 import com.project.microservices.searchservice.exception.InvalidShowIDException;
-import com.project.microservices.searchservice.show.model.ShowDetails;
-import com.project.microservices.searchservice.show.model.ShowDetailsQueryResponse;
-import com.project.microservices.searchservice.show.repository.ShowRepository;
+import com.project.microservices.searchservice.model.ShowDetails;
+import com.project.microservices.searchservice.model.ShowDetailsQueryResponse;
+import com.project.microservices.searchservice.repository.ShowRepository;
 import com.project.microservices.searchservice.utils.Utility;
-
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j

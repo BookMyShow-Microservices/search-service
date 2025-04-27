@@ -1,9 +1,10 @@
-package com.project.microservices.searchservice.movie.service;
+package com.project.microservices.searchservice.service;
+
+import com.project.microservices.searchservice.model.SearchQueryResponse;
+import com.project.microservices.searchservice.model.SearchQueryResponse1;
 
 import java.util.List;
 import java.util.Map;
-import com.project.microservices.searchservice.model.SearchQueryResponse;
-import com.project.microservices.searchservice.model.SearchQueryResponse1;
 
 public interface MovieService {
 	
