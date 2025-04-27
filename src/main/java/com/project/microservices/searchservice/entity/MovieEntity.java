@@ -1,26 +1,17 @@
-package com.project.microservices.searchservice.movie.entity;
+package com.project.microservices.searchservice.entity;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.project.microservices.searchservice.entity.ShowEntity;
+import com.project.microservices.searchservice.utils.JsonTimestampSerializer;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.Duration;
 import java.util.List;
-
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.project.microservices.searchservice.show.entity.ShowEntity;
-import com.project.microservices.searchservice.utils.JsonTimestampSerializer;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor

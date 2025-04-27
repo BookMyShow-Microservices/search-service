@@ -1,32 +1,16 @@
-package com.project.microservices.searchservice.show.entity;
+package com.project.microservices.searchservice.entity;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.project.microservices.searchservice.model.Status;
+import com.project.microservices.searchservice.utils.JsonTimestampSerializer;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
-
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.project.microservices.searchservice.model.Status;
-import com.project.microservices.searchservice.movie.entity.MovieEntity;
-import com.project.microservices.searchservice.showseats.entity.ShowSeatsEntity;
-import com.project.microservices.searchservice.theater.entity.TheaterEntity;
-import com.project.microservices.searchservice.utils.JsonTimestampSerializer;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor

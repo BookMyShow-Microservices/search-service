@@ -1,26 +1,15 @@
-package com.project.microservices.searchservice.showseats.entity;
-
-import java.sql.Timestamp;
+package com.project.microservices.searchservice.entity;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.project.microservices.searchservice.model.Status;
-import com.project.microservices.searchservice.show.entity.ShowEntity;
+import com.project.microservices.searchservice.entity.ShowEntity;
 import com.project.microservices.searchservice.utils.JsonTimestampSerializer;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.sql.Timestamp;
 
 @Data
 @AllArgsConstructor
