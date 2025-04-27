@@ -1,6 +1,5 @@
 package com.project.microservices.searchservice.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +19,7 @@ import jakarta.validation.constraints.NotNull;
 @RestController
 public class SearchController {
 	
-	private SearchService searchService;
+	private final SearchService searchService;
 	
 	@Autowired
 	public SearchController(SearchService searchService) {
@@ -28,26 +27,34 @@ public class SearchController {
 		this.searchService = searchService;
 	}
 
+	/**
+	 * @deprecated
+	 * This method is outdated. Please use getShowsV2 method instead.
+	 */
+	@Deprecated
 	@GetMapping("/api/shows/search")
 	public ResponseEntity<SearchResponse> getShows(@RequestParam @NotBlank String movieName,@RequestParam @NotBlank String theaterCity) {
-		SearchResponse result = searchService.findTheatersByMovieNameAndTheaterCity(movieName, theaterCity);
-	    return new ResponseEntity<>(result, HttpStatus.OK);
+	    return new ResponseEntity<>(searchService.findTheatersByMovieNameAndTheaterCity(movieName, theaterCity), HttpStatus.OK);
 	}
 	
 	@GetMapping("/api/v2/shows/search")
-	public ResponseEntity<SearchResponse> getShows1(@RequestParam @NotNull Integer movieId,@RequestParam @NotNull Integer theaterCityId) {
-		SearchResponse result = searchService.findTheatersByMovieIdAndTheaterCityId(movieId, theaterCityId);
-	    return new ResponseEntity<>(result, HttpStatus.OK);
+	public ResponseEntity<SearchResponse> getShowsV2(@RequestParam @NotNull Integer movieId, @RequestParam @NotNull Integer theaterCityId) {
+	    return new ResponseEntity<>(searchService.findTheatersByMovieIdAndTheaterCityId(movieId, theaterCityId), HttpStatus.OK);
 	}
-	
+
+	/**
+	 * @deprecated
+	 * This method is outdated. Please use getCitiesV2 method instead.
+	 */
+	@Deprecated
 	@GetMapping("/api/cities")
 	public ResponseEntity<List<String>> getCities(){
 		return new ResponseEntity<>(searchService.getAllCities(),HttpStatus.OK);
 	}
 	
 	@GetMapping("/api/v2/cities")
-	public ResponseEntity<HashMap<Integer, String>> getCities1(){
-		return new ResponseEntity<>(searchService.getAllCities1(),HttpStatus.OK);
+	public ResponseEntity<Map<Integer, String>> getCitiesV2(){
+		return new ResponseEntity<>(searchService.getAllCitiesV2(),HttpStatus.OK);
 	}
 	
 

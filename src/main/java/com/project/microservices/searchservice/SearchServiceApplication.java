@@ -2,10 +2,8 @@ package com.project.microservices.searchservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(scanBasePackages = "com.project.microservices.searchservice")
-@EnableJpaRepositories
+@SpringBootApplication
 public class SearchServiceApplication {
 
 	public static void main(String[] args) {

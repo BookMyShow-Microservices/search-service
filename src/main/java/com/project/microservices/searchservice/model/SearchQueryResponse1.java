@@ -18,9 +18,7 @@ public class SearchQueryResponse1 {
 	private String movieName;
 	private int theaterId;
 	private String theaterName;
-	//private String theaterCity;
 	private Integer theaterCityId;
-	//private String cityName;
 	private LocalDate showDate;
 	private Timestamp showStarttime;
 	private int showId;
