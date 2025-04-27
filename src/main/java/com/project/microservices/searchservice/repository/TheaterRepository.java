@@ -1,12 +1,11 @@
-package com.project.microservices.searchservice.theater.repository;
+package com.project.microservices.searchservice.repository;
 
-import java.util.List;
-
+import com.project.microservices.searchservice.entity.TheaterEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.project.microservices.searchservice.theater.entity.TheaterEntity;
+import java.util.List;
 
 @Repository
 public interface TheaterRepository extends JpaRepository<TheaterEntity, Integer> {

@@ -1,16 +1,15 @@
-package com.project.microservices.searchservice.movie.repository;
+package com.project.microservices.searchservice.repository;
 
-import java.util.List;
-
-import com.project.microservices.searchservice.movie.model.MovieResponse;
+import com.project.microservices.searchservice.model.SearchQueryResponse;
+import com.project.microservices.searchservice.model.SearchQueryResponse1;
+import com.project.microservices.searchservice.entity.MovieEntity;
+import com.project.microservices.searchservice.model.MovieResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.project.microservices.searchservice.model.SearchQueryResponse;
-import com.project.microservices.searchservice.model.SearchQueryResponse1;
-import com.project.microservices.searchservice.movie.entity.MovieEntity;
+import java.util.List;
 
 @Repository
 public interface MovieRepository extends JpaRepository<MovieEntity, Integer>  {
@@ -42,7 +41,7 @@ public interface MovieRepository extends JpaRepository<MovieEntity, Integer>  {
    @Query("SELECT movie.movieName FROM MovieEntity movie WHERE LOWER(movie.movieName) LIKE LOWER(CONCAT('%', :movieName, '%'))")
    List<String> findByMovieName(@Param("movieName") String movieName);
 
-    @Query("SELECT new com.project.microservices.searchservice.movie.model.MovieResponse(" +
+    @Query("SELECT new com.project.microservices.searchservice.model.MovieResponse(" +
             "movie.movieId, movie.movieName ) "
             + "FROM MovieEntity movie WHERE LOWER(movie.movieName) LIKE LOWER(CONCAT('%', :movieName, '%'))")
     List<MovieResponse> findByMovieName1(@Param("movieName") String movieName);
