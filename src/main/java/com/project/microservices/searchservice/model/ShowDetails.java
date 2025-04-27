@@ -1,10 +1,10 @@
-package com.project.microservices.searchservice.show.model;
-
-import java.time.LocalDate;
+package com.project.microservices.searchservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor

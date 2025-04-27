@@ -1,14 +1,14 @@
-package com.project.microservices.searchservice.city.model;
-
-import java.sql.Timestamp;
+package com.project.microservices.searchservice.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.project.microservices.searchservice.utils.JsonTimestampSerializer;
-
 import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.sql.Timestamp;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

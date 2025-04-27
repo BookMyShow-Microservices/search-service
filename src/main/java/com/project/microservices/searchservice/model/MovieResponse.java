@@ -1,4 +1,4 @@
-package com.project.microservices.searchservice.movie.model;
+package com.project.microservices.searchservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

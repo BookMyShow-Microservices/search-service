@@ -1,15 +1,13 @@
-package com.project.microservices.searchservice.show.model;
-
-import java.sql.Timestamp;
-import java.time.LocalDate;
+package com.project.microservices.searchservice.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.project.microservices.searchservice.model.Status;
 import com.project.microservices.searchservice.utils.JsonTimestampSerializer;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor

@@ -1,11 +1,8 @@
-package com.project.microservices.searchservice.theater.model;
+package com.project.microservices.searchservice.model;
 
-
-import java.sql.Timestamp;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.project.microservices.searchservice.utils.JsonTimestampSerializer;
-
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -13,6 +10,8 @@ import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.sql.Timestamp;
 
 @Data
 @NoArgsConstructor
