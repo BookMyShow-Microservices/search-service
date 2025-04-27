@@ -1,16 +1,14 @@
-package com.project.microservices.searchservice.showseats.controller;
+package com.project.microservices.searchservice.controller;
 
+import com.project.microservices.searchservice.model.ShowSeatsResponse;
+import com.project.microservices.searchservice.service.ShowSeatsService;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.project.microservices.searchservice.showseats.model.ShowSeatsResponse;
-import com.project.microservices.searchservice.showseats.service.ShowSeatsService;
-
-import jakarta.validation.constraints.NotNull;
 
 @RestController
 public class ShowSeatsController {
