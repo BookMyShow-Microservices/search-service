@@ -1,6 +1,4 @@
-package com.project.microservices.searchservice.showseats.model;
-
-import com.project.microservices.searchservice.model.Status;
+package com.project.microservices.searchservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
